@@ -18,7 +18,7 @@ export const register = async (req: express.Request, res: express.Response) => {
 
     const salt = random();
 
-    const user = await createUser({
+    const user = createUser({
       email, 
       name, 
       authentification: {
@@ -31,10 +31,8 @@ export const register = async (req: express.Request, res: express.Response) => {
 
   } catch (error) {
     console.log(error);
-    res.sendStatus(400);
+    return res.sendStatus(400);
   }
-
-  return res.sendStatus(500);
 }
 
 
@@ -70,11 +68,12 @@ export const login = async (req: express.Request, res: express.Response) => {
 
   } catch (error) {
     console.log(error);
-    res.sendStatus(400);
+    return res.sendStatus(400);
   }
-
-  return res.sendStatus(400);
 }
 
 
 
+
+
+  
